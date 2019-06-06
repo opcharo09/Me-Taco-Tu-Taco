@@ -1,8 +1,8 @@
-var express = require("express");
+const express = require("express");
 
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-var app = express();
+const app = express();
 
 
 app.use(express.static("public"));
@@ -12,16 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //  Handlebars.
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes 
-var routes = require("./controller/tacos_controller");
+const routes = require("./controller/tacos_controller");
 
 app.use(routes);
 
 app.listen(PORT, function() {
-  console.log("App now listening at localhost:" + PORT);
+  console.log("Server listening on: http://localhost:" + PORT);
 });

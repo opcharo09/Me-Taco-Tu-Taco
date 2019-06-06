@@ -1,11 +1,13 @@
-var mysql = required("mysql");
+const mysql = required("mysql");
+required('dotenv').config();
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "",
-    database: "tacos_db"
+console.log(process.env.DB_PORT);
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 });
 
 connection.connect(function(err){
